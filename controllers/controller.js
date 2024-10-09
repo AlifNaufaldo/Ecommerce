@@ -1,6 +1,10 @@
 class Controller {
-    constructor(parameters) {
-        
+    static async homePage(req, res){
+        try {
+            res.render('Home')
+        } catch (err) {
+            res.send(err)
+        }
     }
 }
 
