@@ -1,21 +1,21 @@
 [{
     "id": 1,
-    "addres": "Jalan Dipanegoro",
-    "postal-code": "309296",
+    "address": "Jalan Dipanegoro",
+    "postal_code": "309296",
     "userId": 1
   }, {
     "id": 2,
-    "addres": "Jalan Mallengkeri raya",
-    "postal-code": "90225",
+    "address": "Jalan Mallengkeri raya",
+    "postal_code": "90225",
     "userId": 2
   }, {
     "id": 3,
-    "addres": "Jalan Ir. Soekarno",
-    "postal-code": "92558",
+    "address": "Jalan Ir. Soekarno",
+    "postal_code": "92558",
     "userId": 3
   }, {
     "id": 4,
-    "addres": "Jalan Para Pahlawan",
-    "postal-code": "95554",
+    "address": "Jalan Para Pahlawan",
+    "postal_code": "95554",
     "userId": 4
   }]

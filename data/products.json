@@ -3,31 +3,27 @@
     "description": "baju yang cocok untuk aktifitas sehari-hari di luar angkasa",
     "price": 150000,
     "CategoryId": 1,
-    "UserId": 1,
-    "imgURL": "https://img.lazcdn.com/g/p/69762025b1639490909e11ff15a835fd.jpg_960x960q80.jpg_.webp"
+    "imgUrl": "https://img.lazcdn.com/g/p/69762025b1639490909e11ff15a835fd.jpg_960x960q80.jpg_.webp"
 },
 {
     "name": "Kipas Angin Terbang",
     "description": "Kipas yang bisa terbang dan memberikan kesejukan ketika berkunjung ke Matahari ",
     "price": 1000000,
     "CategoryId": 2,
-    "UserId": 2,
-    "imgURL": "https://www.sejahtera.co.id/assets/product/KPS049/sejahtera-houseware_ktyxp_kps049_xxl.jpg"
+    "imgUrl": "https://www.sejahtera.co.id/assets/product/KPS049/sejahtera-houseware_ktyxp_kps049_xxl.jpg"
 },
 {
     "name": "Smartphone Nokay",
     "description": "Smartphone yang selalu dalam keadaan okay",
     "price": 200000,
     "CategoryId": 3,
-    "UserId": 3,
-    "imgURL": "https://i0.wp.com/btr.michaelkwan.com/wp-content/uploads/2013/07/4788569980_4f9353c859.jpg?fit=500%2C281&ssl=1"
+    "imgUrl": "https://i0.wp.com/btr.michaelkwan.com/wp-content/uploads/2013/07/4788569980_4f9353c859.jpg?fit=500%2C281&ssl=1"
 },
 {
     "name": "Kantong Doraemang",
     "description": "kantong plastik yang kuat bisa menambung barang apa saja ",
     "price": 2000,
     "CategoryId": 4,
-    "UserId": 4,
-    "imgURL": "https://down-id.img.susercontent.com/file/ebbf85a3eed709ff7e81ecfd6d672b5e"
+    "imgUrl": "https://down-id.img.susercontent.com/file/ebbf85a3eed709ff7e81ecfd6d672b5e"
 }
 ]
