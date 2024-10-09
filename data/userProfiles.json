@@ -1,0 +1,21 @@
+[{
+    "id": 1,
+    "addres": "Jalan Dipanegoro",
+    "postal-code": "309296",
+    "userId": 1
+  }, {
+    "id": 2,
+    "addres": "Jalan Mallengkeri raya",
+    "postal-code": "90225",
+    "userId": 2
+  }, {
+    "id": 3,
+    "addres": "Jalan Ir. Soekarno",
+    "postal-code": "92558",
+    "userId": 3
+  }, {
+    "id": 4,
+    "addres": "Jalan Para Pahlawan",
+    "postal-code": "95554",
+    "userId": 4
+  }]

@@ -1,0 +1,26 @@
+[{
+    "id": 1,
+    "name": "Ahmad Pratama",
+    "email": "Pratamaahmad0120@dell.com",
+    "password": "vF3\"=O?AZ",
+    "role": "seller"
+  }, {
+    "id": 2,
+    "name": "Berliana DwiPutri",
+    "email": "berlianputri21@google.com",
+    "password": "rP1?\\FnH{",
+    "role": "seller"
+  }, {
+    "id": 3,
+    "name": "Cantika Triandiny",
+    "email": "cantikTri000@boston.com",
+    "password": "xC6_3tbm1kHSi#jN",
+    "role": "seller"
+  }, {
+    "id": 4,
+    "name": "Denish fourland",
+    "email": "fourlandenish999@unicef.org",
+    "password": "pY9#e%@D16\"<I",
+    "role": "seller"
+  }]
+  

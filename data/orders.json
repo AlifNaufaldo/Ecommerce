@@ -1,0 +1,25 @@
+[{
+    "id": 3,
+    "productId": 1,
+    "userId": 3,
+    "quantity": 14,
+    "amount": 692815
+  }, {
+    "id": 3,
+    "productId": 3,
+    "userId": 1,
+    "quantity": 38,
+    "amount": 841258
+  }, {
+    "id": 2,
+    "productId": 2,
+    "userId": 2,
+    "quantity": 98,
+    "amount": 961434
+  }, {
+    "id": 3,
+    "productId": 4,
+    "userId": 5,
+    "quantity": 22,
+    "amount": 445755
+  }]
