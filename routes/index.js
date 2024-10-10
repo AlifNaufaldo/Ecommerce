@@ -1,6 +1,7 @@
 const ProductController = require('../controllers/productController.js');
 const UserController = require('../controllers/userController.js');
 const router = require('express').Router();
+const invoiceController = require('../controllers/invoiceController');
 
 router.get('/', UserController.homePage)
 router.get('/login', UserController.loginPage)
@@ -22,6 +23,8 @@ router.post('/products/add',ProductController.postAddProductForm)
 router.get('/products/:id/buy',ProductController.buyProduct)
 router.get('/products/:id/update', ProductController.getUpdateProduct)
 router.post('/products/:id/update', ProductController.postAddProductForm )
-// router.get('/products/:id/delete', )
+router.get('/products/:id/delete',ProductController.deleteProduct )
+
+router.post('/create', invoiceController.createInvoice)
 
 module.exports = router
