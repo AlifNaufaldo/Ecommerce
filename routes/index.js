@@ -18,11 +18,11 @@ router.get('/logout', UserController.logout)
 //     }
 // })
 router.get('/products',ProductController.showProduct)
-// router.get('/products/add',)
-// router.post('/products/add',)
-// router.get('/products/:id/buy',)
-// router.get('/products/:id/update', )
-// router.post('/products/:id/update', )
+router.get('/products/add',ProductController.getAddProductForm)
+router.post('/products/add',ProductController.postAddProductForm)
+router.get('/products/:id/buy',ProductController.buyProduct)
+router.get('/products/:id/update', ProductController.getUpdateProduct)
+router.post('/products/:id/update', ProductController.postAddProductForm )
 // router.get('/products/:id/delete', )
 
 module.exports = router
