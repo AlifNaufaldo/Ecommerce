@@ -1,11 +1,12 @@
-const Controller = require('../controllers/controller.js');
+const ProductController = require('../controllers/productController.js');
+const UserController = require('../controllers/userController.js');
 const router = require('express').Router();
 
-router.get('/', Controller.homePage)
-router.get('/login', Controller.loginPage)
-router.get('/register',Controller.showRegistForm)
-router.post('/register',Controller.registerPage)
-router.get('/logout',Controller.logout)
+router.get('/', UserController.homePage)
+router.get('/login', UserController.loginPage)
+router.get('/register',UserController.showRegistForm)
+router.post('/register',UserController.registerPage)
+router.get('/logout',UserController.logout)
 
 // router.use(function (req, res, next) {
 //     if (!req.session.user.id) {
@@ -15,9 +16,7 @@ router.get('/logout',Controller.logout)
 //         next()
 //     }
 // })
-// router.get('/products',)
-// router.get('/user/:id/profile/edit',)
-// router.post('/user/:id/profile/edit', )
+router.get('/products',ProductController.showProduct)
 // router.get('/products/add',)
 // router.post('/products/add',)
 // router.get('/products/:id/buy',)

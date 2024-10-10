@@ -1,25 +1,36 @@
 const {User} = require('../models')
-class Controller {
-    static async loginInForm(req, res) {
+const bcrypt = require('bcryptjs')
+
+class UserController {
+    // buat home page // login // register
+    static async homePage(req, res){
         try {
-            res.render('/login')
+            res.render('Home')
+        } catch (err) {
+            res.send(err)
+        }
+    }
+    //menampilkan form register
+    static async showRegistForm(req, res) {
+        try {
+            res.render('register')
         } catch (error) {
-            
+            console.log(error);
         }
     }
     static async loginPage(req, res) {
         try {
-            // res.send('hgh')
-            // handle di permintaan login
             const { username, password } = req.body;
-                const user = await User.findOne({ where: { username } });
+                const user = await User.findOne({
+                    where : {username}
+                });
                 // res.send(user)
                 if(user){
                 //jika username ada check valid passwordnya
                     const isPasswordValid = await bcrypt.compare(password, user.password);
                     if(isPasswordValid){
                         req.session.id = user.id;
-                        return res.redirect('/')
+                        return res.render('Home',{user})
                     }else {
                         const error = `invalid username and password`
                         return res.redirect(`/login?error=${error}`)
@@ -33,32 +44,24 @@ class Controller {
             res.send(err)
         }
     }
-    static async postLoginPage(req, res) {
-        const {email, password} = req.body;
+    static async registerPage(req, res) {
+        const {name, email, password, role} = req.body
         try {
-            const user = await User.findAll({
-                 where: {
-                    email: email,
-                },
-            });
-            if (user.length > 0) {
-                const user = user[0];
-                // Verifikasi password (gunakan bcrypt untuk perbandingan)
-                const isPasswordValid = await bcrypt.compare(password, user.password);
-                if (isPasswordValid) {
-                    req.session.id = user.id;
-                    res.redirect('/');
-                } else {
-                    const error = `please try again`
-                    res.redirect(`/login?error=${error}`);
-                }
-            } else {
-                const error = `please try again`
-                res.redirect(`/login?error=${error}`);
-            }
+            await User.create({name, email, password, role})
+            res.redirect('/login')
         } catch (err) {
-            console.error(err);
-        }   
+            if(err.name == `SequelizeValidationError`){
+                const error = err.errors.map((e) => e.message).join(', ')
+                return res.status(400).redirect(`/register?error=${error}`)
+            }
+            res.send(err)
+        }
     }
+    static async logout(req, res){
+        req.session = null;
+        res.redirect('/')
+    }
+    
 }
-module.exports = Controller
+
+module.exports = UserController

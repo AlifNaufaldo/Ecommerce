@@ -11,13 +11,25 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Order.belongsTo(models.User)
-      Order.belongsTo(models.Product)
+      // Order.belongsTo(models.User)
+      // Order.belongsTo(models.Product)
     }
   }
   Order.init({
-    productId: DataTypes.INTEGER,
-    userId: DataTypes.INTEGER,
+    productId:{
+      type: DataTypes.INTEGER,
+      references: {
+          model: 'Products',
+          key: 'id'
+      }
+    },
+    userId: {
+      type: DataTypes.INTEGER,
+        references: {
+            model: 'Users',
+            key: 'id'
+        }
+    },
     quantity: DataTypes.INTEGER,
     amount: DataTypes.INTEGER
   }, {
