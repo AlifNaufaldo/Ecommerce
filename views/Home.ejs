@@ -1,5 +1,149 @@
-<%- include('partials/Header') %>
+<%- include('partials/Header') %> <%- include('partials/Navbar') %>
 
-<%- include('partials/Navbar') %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h1>Welcome to Our Website</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet
+        nulla auctor, vestibulum magna sed, convallis ex. Cum sociis natoque
+        penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet
+        nulla auctor, vestibulum magna sed, convallis ex. Cum sociis natoque
+        penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+      </p>
+    </div>
+    <div class="col-md-6">
+      <h2>Login Form</h2>
+      <form>
+        <div class="form-group mb-1">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            id="username"
+            placeholder="Enter username"
+            autocomplete="username"
+          />
+        </div>
+        <div class="form-group mb-2">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Enter password"
+            autocomplete="current-password"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          Register
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-2">
+            <label for="nama" class="form-label">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nama"
+              placeholder="Masukkan nama lengkap"
+            />
+          </div>
+          <div class="mb-2">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="Masukkan alamat email"
+            />
+          </div>
+          <div class="mb-2">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              placeholder="Masukkan kata sandi"
+            />
+          </div>
+          <div class="mb-2">
+            <label for="konfirmasi_password" class="form-label"
+              >Konfirmasi Kata Sandi</label
+            >
+            <input
+              type="password"
+              class="form-control"
+              id="konfirmasi_password"
+              placeholder="Konfirmasi kata sandi"
+            />
+          </div>
+          <div class="mb-2">
+            <label for="role" class="form-label">Role</label><br>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="role"
+                id="admin"
+                value="admin"
+              />
+              <label class="form-check-label" for="admin">Admin</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="role"
+                id="user"
+                value="user"
+              />
+              <label class="form-check-label" for="user">User </label>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary">Register</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <%- include('partials/Footer') %>
