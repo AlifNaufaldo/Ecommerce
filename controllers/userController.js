@@ -27,7 +27,7 @@ class UserController {
                 // res.send(user)
                 if(user){
                 //jika username ada check valid passwordnya
-                    const isPasswordValid = await bcrypt.compare(password, user.password);
+                    const isPasswordValid = bcrypt.compareSync(password, user.password);
                     if(isPasswordValid){
                         req.session.id = user.id;
                         return res.render('Home',{user})
@@ -52,7 +52,7 @@ class UserController {
         } catch (err) {
             if(err.name == `SequelizeValidationError`){
                 const error = err.errors.map((e) => e.message).join(', ')
-                return res.status(400).redirect(`/register?error=${error}`)
+                return res.redirect(`/register?error=${error}`)
             }
             res.send(err)
         }
