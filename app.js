@@ -10,7 +10,10 @@ app.use(session({
   secret: 'rahasia kita',
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: false }
+  cookie: { 
+    secure: false,
+    sameSite:true
+   }
 }))
 app.use(require('./routes'));
 

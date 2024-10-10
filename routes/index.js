@@ -9,14 +9,15 @@ router.get('/register', UserController.showRegistForm)
 router.post('/register', UserController.registerPage)
 router.get('/logout', UserController.logout)
 
-// router.use(function (req, res, next) {
-//     if (!req.session.user.id) {
-//         const error = `Please login first`
-//         return res.redirect(`/login?srror=${error}`);
-//     }else {
-//         next()
-//     }
-// })
+router.use(function (req, res, next) {
+    if (!req.session.userId) {
+        const error = `Please login first`
+        return res.redirect(`/login?srror=${error}`);
+    }else {
+        next()
+    }
+})
+
 router.get('/products',ProductController.showProduct)
 router.get('/products/add',ProductController.getAddProductForm)
 router.post('/products/add',ProductController.postAddProductForm)
