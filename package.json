@@ -13,8 +13,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "easy": "^19.0.4",
+    "easyinvoice": "^3.0.47",
     "ejs": "^3.1.10",
     "express": "^4.21.1",
+    "express-session": "^1.18.1",
     "pg": "^8.13.0",
     "sequelize": "^6.37.4"
   },
