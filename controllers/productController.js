@@ -1,6 +1,6 @@
 const {Product, Order, Category, User} = require('../models');
 const bcrypt = require('bcryptjs');
-const {Op} = require('sequelize');
+const {Op, where} = require('sequelize');
 const formatCurrency = require('../helper/formatCurrency');
 
 
@@ -9,12 +9,24 @@ class ProductController {
     static async showProduct(req, res) {
         // +format currency
         
-        const { filter } = req.query //untuk static metode filter
+        let { search } = req.query //untuk static metode filter
         try {
             // res.send('hfhf')
+            if(!search){
+                search = '';
+            }
             const data = await Product.findAll({
-                include: Category
-            })
+                include: {
+                    model: Category,  
+                    required: false  
+                },
+                order: [["price", "ASC"]],
+                where: {
+                    name: {
+                        [Op.iLike]: `%${search}%` 
+                    }
+                }
+            });
             //
             // const data = await Product.getProductByCategory(filter, Category, {
             //     include :{
@@ -23,7 +35,7 @@ class ProductController {
             //       }
             // })
             // res.send(data)
-            res.render('Show', { data, formatCurrency })
+            res.render('Show', { data, formatCurrency, msg: '' })
         } catch (error) {
             console.log(error);
             return res.send({ message: 'Please check your input', error: error.message });  
@@ -33,7 +45,7 @@ class ProductController {
             try {
                 const data = await Product.findAll()
                 // res.send(data)
-                res.render('addProduct', {data}); 
+                res.render('AddFormProduct', {data}); 
             } catch (error) {
                 console.error(error);
                 return res.send({ message: 'Please check your input', error: error.message });
@@ -56,7 +68,7 @@ class ProductController {
                 CategoryId
             });
             // res.send(data);
-            res.redirect()
+            res.redirect('/products')
         } catch (error) {
             console.error(error);
             return res.send({ message: 'Please check your input', error: error.message });
@@ -88,13 +100,14 @@ class ProductController {
     static async getUpdateProduct(req, res) {
         try {
             // Mendapatkan id produk dari parameter URL
-            const {productId} = req.params;
+            const { id } = req.params;
             // Mencari produk yang akan diperbarui
-            const data = await Product.findByPk(productId);
+            const data = await Product.findByPk(id);
+            // res.send(data)
             if (!data) {
                 return res.send({ message: 'product is not found' });
             }
-               res.render('', {data});
+            res.render('UpdateFormProduct', { data })
             // res.redirect()
         } catch (error) {
             console.error(error);
@@ -104,7 +117,7 @@ class ProductController {
     static async postUpdateProduct(req, res) {
         try {
             // Mendapatkan id produk dari parameter URL
-            const {productId} = req.params;
+            const { productId } = req.params;
             // Mendapatkan data dari request body
             const { name, description, price, imgUrl, CategoryId} = req.body;
             // Validasi input
@@ -121,7 +134,7 @@ class ProductController {
                 name, description, price, imgUrl, CategoryId
             });
                res.send(newProduct);
-            // res.redirect()
+            res.redirect('/products')
         } catch (error) {
             console.error(error);
             return res.send({ message: 'Please check your input', error: error.message });
@@ -130,18 +143,21 @@ class ProductController {
     static async deleteProduct(req, res) {
         try {
             // Mendapatkan ID produk dari parameter URL
-            const {productId} = req.params;
+            const { id } = req.params;
+            // console.log(id)
+            // console.log("Deleting product with ID:", id);
             // Mencari produk berdasarkan ID
-            const data = await Product.findByPk(productId);
+            const data = await Product.findByPk(id);
             // Validasi: jika produk tidak ditemukan
             if (!data) {
                 return res.send({ message: 'Product is not found' });
             }
             // Menghapus produk
             await Product.destroy({
-                where: { id: productId }
+                where: { id: id }
             });
-            return res.send({ message: 'Product delete is success' });
+            res.redirect('/products')
+            // return res.send({ message: 'Product delete is success' });
         } catch (error) {
             console.error(error);
             return res.send({ message: 'Please check your input', error: error.message });

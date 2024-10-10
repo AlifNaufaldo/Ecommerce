@@ -1,0 +1,94 @@
+<%- include('partials/Header') %>
+<%- include('partials/Navbar') %>
+
+<style>
+    body {
+        height: 100vh;
+        margin: 0;
+        background-color: rgba(128, 128, 128, 0.5); 
+        background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'8\' height=\'8\'%3E%3Crect x=\'0\' y=\'0\' width=\'4\' height=\'4\' fill=\'%23f0f0f0\'/%3E%3C/svg%3E'); /* adds a subtle grid pattern */
+        background-blend-mode: multiply;
+        background-size: 20px 20px;
+    }
+
+    .container-full-height {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 650px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .btn-login {
+            background-color: #3498db ;
+            color: white;
+        }
+</style>
+
+<div class="container-full-height">
+    <div class="card shadow-md p-4">
+        <h2 class="text-center">Add Product</h2>
+        <form action="/products/add" method="POST">
+                <div class="form-group row">
+                    <label for="name" class="col-sm-2 col-form-label">Name</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control form-control-sm" id="name" name="name"  placeholder="<%= data.name %>">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="description" class="col-sm-2 col-form-label">Description</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control form-control-sm" id="description" name="description" placeholder="<%= data.description %>">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="price" class="col-sm-2 col-form-label">Price</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control form-control-sm" id="price" name="price" placeholder="<%= data.price %>">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="imgUrl" class="col-sm-2 col-form-label">imgUrl</label>
+                    <div class="col-sm-10">
+                      <input type="url" class="form-control form-control-sm" id="imgUrl" name="imgUrl" placeholder="<%= data.imgUrl %>">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="category" class="col-sm-2 col-form-label">Category</label>
+                    <div class="col-sm-10">
+                      <select id="category" class="form-control form-control-sm" name="CategoryId" required>
+                          <option value="1">Makanan & Minuman</option> 
+                          <option value="2">Gadget</option> 
+                          <option value="3">Aksesoris & Perhiasan</option> 
+                          <option value="4">Buku</option> 
+                          <option value="5">Crafting</option> 
+                          <option value="6">Pakaian</option> 
+                          <option value="7">Dapur</option> 
+                          <option value="8">Kesehatan & Kecantikan</option> 
+                          <option value="9">Hobi & Mainan</option> 
+                          <option value="10">Elektronik</option> 
+                          <option value="11">Rumah Tangga</option> 
+                          <option value="12">Olahraga</option> 
+                          <option value="13">Pertukangan</option> 
+                          <option value="14">Kantor</option> 
+                          <option value="15">Otomotif</option>
+                      </select>
+                    </div>
+                  </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary btn-sm">Register Product</button>
+            </div>
+          </form>      
+    </div>
+</div>
+
+<%- include('partials/Footer') %>
