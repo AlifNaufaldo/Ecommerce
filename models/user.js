@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       User.belongsToMany(models.Product, {
         through: models.Order,
-        foreignKey: 'userId'
+        foreignKey: 'userId',
+        otherKey: 'productId'
       })
     }
   }
