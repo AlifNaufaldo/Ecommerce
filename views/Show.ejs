@@ -33,7 +33,8 @@
           <div class="card-body">
             <h5 class="card-title"><%= e.name %></h5>
             <p class="card-text"><%= e.description %></p>
-            <p class="card-text"><small class="text-muted">Price: <%= e.price %></small></p>
+            <p class="card-text"><small class="text-muted"><%= formatCurrency(e.price) %></small></p>
+            <a href=""><button class="btn btn-primary btn-sm ">Buy</button></a>
           </div>
         </div>
       </div>

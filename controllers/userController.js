@@ -51,7 +51,6 @@ class UserController {
             res.render('AddFormUser')
         } catch (error) {
             console.log(error);
-
         }
     }
 

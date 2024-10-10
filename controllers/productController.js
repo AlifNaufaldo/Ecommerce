@@ -1,24 +1,29 @@
-
 const {Product, Order, Category, User} = require('../models');
 const bcrypt = require('bcryptjs');
-const {Op} = require('sequelize')
+const {Op} = require('sequelize');
+const formatCurrency = require('../helper/formatCurrency');
+
+
 
 class ProductController {
     static async showProduct(req, res) {
-        const {filter} = req.query //untuk static metode filter
+        // +format currency
+        
+        const { filter } = req.query //untuk static metode filter
         try {
             // res.send('hfhf')
-            // const data = await Product.findAll({
-            //     include: Category
-            // })
-            const data = await Product.getProductByCategory(filter, Category, {
-                include :{
-                    model: Category,
-                    attributes: ['name']
-                  }
+            const data = await Product.findAll({
+                include: Category
             })
+            //
+            // const data = await Product.getProductByCategory(filter, Category, {
+            //     include :{
+            //         model: Category,
+            //         attributes: ['name']
+            //       }
+            // })
             // res.send(data)
-            res.render('Show', { data })
+            res.render('Show', { data, formatCurrency })
         } catch (error) {
             console.log(error);
             return res.send({ message: 'Please check your input', error: error.message });  
