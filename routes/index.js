@@ -3,10 +3,11 @@ const UserController = require('../controllers/userController.js');
 const router = require('express').Router();
 
 router.get('/', UserController.homePage)
-router.get('/login', UserController.loginPage)
-router.get('/register',UserController.showRegistForm)
-router.post('/register',UserController.registerPage)
-router.get('/logout',UserController.logout)
+router.get('/login', UserController.login)
+router.post('/login', UserController.loginPage)
+router.get('/register', UserController.showRegistForm)
+router.post('/register', UserController.registerPage)
+router.get('/logout', UserController.logout)
 
 // router.use(function (req, res, next) {
 //     if (!req.session.user.id) {

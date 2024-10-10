@@ -1,4 +1,37 @@
-<%- include('partials/Header') %> <%- include('partials/Navbar') %>
+<%- include('partials/Header') %>
+
+<style>
+  .btn-custom {
+            border-radius: 50px;
+            width: 200px;
+            font-weight: bold;
+        }
+        .btn-login {
+            background-color: #3498db ;
+            color: white;
+        }
+        .btn-register {
+            background-color: #f1c40f;
+            color: white;
+        }
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #ddd;
+        }
+        .divider::before {
+            margin-right: .25em;
+        }
+        .divider::after {
+            margin-left: .25em;
+        }
+</style>
 
 <div class="container d-flex align-items-center" style="height: 80vh">
   <div class="row">
@@ -16,126 +49,14 @@
       </p>
     </div>
     <div class="col-md-6">
-      <h2>Login Form</h2>
-      <form method="get"  action="/login">
-        <div class="form-group mb-1">
-          <label for="username">Username</label>
-          <input
-            type="text"
-            name="user"
-            class="form-control"
-            id="username"
-            placeholder="Enter username"
-            autocomplete="username"
-          />
-        </div>
-        <div class="form-group mb-2">
-          <label for="password">Password</label>
-          <input
-            type="password"
-            class="form-control"
-            id="password"
-            placeholder="Enter password"
-            autocomplete="current-password"
-          />
-        </div>
-        <button type="submit" class="btn btn-primary">Login</button>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal"data-bs-target="#exampleModal">Register</button>
-      </form>
-    </div>
-  </div>
-</div>
+      <div class="text-center">
+        <a href="/login"><button type="button" class="btn btn-custom btn-login mb-3">Log In</button></a>
+        
+        <div class="divider">Don't have an account yet?</div>
 
-<!-- Modal -->
-<div
-  class="modal fade"
-  id="exampleModal"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <form method="post" action="/register">
-          <div class="mb-2">
-            <label for="nama" class="form-label">Name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="nama"
-              placeholder="Masukkan nama lengkap"
-            />
-          </div>
-          <div class="mb-2">
-            <label for="email" class="form-label">Email</label>
-            <input
-              type="email"
-              class="form-control"
-              id="email"
-              placeholder="Masukkan alamat email"
-            />
-          </div>
-          <div class="mb-2">
-            <label for="password" class="form-label">Password</label>
-            <input
-              type="password"
-              class="form-control"
-              id="password"
-              placeholder="Masukkan kata sandi"
-            />
-          </div>
-          <div class="mb-2">
-            <label for="konfirmasi_password" class="form-label"
-              >Konfirmasi Kata Sandi</label
-            >
-            <input
-              type="password"
-              class="form-control"
-              id="konfirmasi_password"
-              placeholder="Konfirmasi kata sandi"
-            />
-          </div>
-          <div class="mb-2">
-            <label for="role" class="form-label">Role</label><br>
-            <div class="form-check form-check-inline">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="role"
-                id="admin"
-                value="admin"
-              />
-              <label class="form-check-label" for="admin">Admin</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="role"
-                id="user"
-                value="user"
-              />
-              <label class="form-check-label" for="user">User </label>
-            </div>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Close
-        </button>
-        <button type="button" class="btn btn-primary">Register</button>
-      </div>
+        <a href="/register"><button type="button" class="btn btn-custom btn-register">Register</button></a>
+        
+    </div>
     </div>
   </div>
 </div>

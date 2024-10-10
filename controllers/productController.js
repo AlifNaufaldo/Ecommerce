@@ -11,7 +11,8 @@ class ProductController {
                     model: User
                 }]
             })
-            res.send(data)
+            // res.send(data)
+            res.render('Show', { data })
         } catch (error) {
             console.log(error);
             res.send(error)
