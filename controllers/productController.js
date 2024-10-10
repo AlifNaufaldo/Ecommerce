@@ -17,8 +17,8 @@ class ProductController {
                     attributes: ['name']
                   }
             })
-            res.send(data)
-            // res.render()
+            // res.send(data)
+            res.render('Show', { data })
         } catch (error) {
             console.log(error);
             return res.send({ message: 'Please check your input', error: error.message });  

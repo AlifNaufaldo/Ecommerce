@@ -10,53 +10,75 @@ class UserController {
             res.send(err)
         }
     }
-    //menampilkan form register
-    static async showRegistForm(req, res) {
+
+    static async login(req, res){
         try {
-            res.render('register')
-        } catch (error) {
-            console.log(error);
+            res.render('Login')
+        } catch (err) {
+            res.send(err)
         }
     }
+    
+    //login 
     static async loginPage(req, res) {
         try {
             const { username, password } = req.body;
-                const user = await User.findOne({
-                    where : {username}
-                });
-                // res.send(user)
-                if(user){
-                //jika username ada check valid passwordnya
-                    const isPasswordValid = bcrypt.compareSync(password, user.password);
-                    if(isPasswordValid){
-                        req.session.id = user.id;
-                        return res.render('Home',{user})
-                    }else {
-                        const error = `invalid username and password`
-                        return res.redirect(`/login?error=${error}`)
-                    }
-                //jika username nya tidak ada
-                }else{
-                    const error = `invalid username and password`
-                    return res.redirect(`/login?error=${error}`)
-                }
-        } catch (err) {
-            res.send(err)
+            // console.log(username)
+            // console.log(password)
+            // console.log(req.body)
+            const user = await User.findOne({ where: { username } }); 
+
+            if (!user) {
+                return res.status(401).send("Invalid username or password.");
+            } 
+
+            const validatePassword =  await bcrypt.compare(password, user.password);
+            // console.log(validatePassword)
+
+            if (!validatePassword) {
+                return res.status(401).send("Invalid username or password.");
+            } 
+            req.session.userId = user.id;
+            res.redirect('/products');
+        } catch (error) {
+            res.send(error.message);
         }
     }
-    static async registerPage(req, res) {
-        const {name, email, password, role} = req.body
+
+    //menampilkan form register
+    static async showRegistForm(req, res) {
         try {
-            await User.create({name, email, password, role})
-            res.redirect('/login')
-        } catch (err) {
-            if(err.name == `SequelizeValidationError`){
-                const error = err.errors.map((e) => e.message).join(', ')
-                return res.redirect(`/register?error=${error}`)
-            }
-            res.send(err)
+            res.render('AddFormUser')
+        } catch (error) {
+            console.log(error);
+
         }
     }
+
+    static async registerPage(req, res) {
+        try {
+            //tampung
+			const { username, email, password, role } = req.body;
+
+            //check ke  database
+
+			const userAlreadyExist = await User.findOne({ where: { username } });
+			if (userAlreadyExist) {
+				return res.status(400).send("Username already exists.");
+			} 
+
+			const emailAlreadyExist = await User.findOne({ where: { email } });
+			if (emailAlreadyExist) {
+				return res.status(400).send("Email already exists.");
+			} 
+
+			const newUser = await User.create({ username, email, password, role });
+			res.redirect("/login");
+		} catch (error) {
+			res.send(error.message);
+		}
+	}
+    
     static async logout(req, res){
         req.session = null;
         res.redirect('/')
