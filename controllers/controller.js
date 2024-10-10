@@ -1,4 +1,6 @@
 class Controller {
+
+    // buat home page // login // register
     static async homePage(req, res){
         try {
             res.render('Home')
