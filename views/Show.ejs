@@ -1,0 +1,45 @@
+<%- include('partials/Header') %>
+ <%- include('partials/Navbar') %>
+
+
+<!-- Bagian atas dengan search box dan button -->
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="d-flex align-items-center justify-content-center">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-dark me-2" type="submit">Search</button>
+        <span class="me-2">Filter</span>
+        <select class="form-select">
+          <option>Category 1</option>
+          <option>Category 2</option>
+          <option>Category 3</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+      
+
+
+
+<!-- Main content menggunakan card -->
+<div class="container mt-4">
+  <div class="row">
+    <% data.forEach((e) => { %>
+      <div class="col-md-3">
+        <div class="card mb-3">
+          <img src="<%= e.imgUrl %>" alt="" srcset="<%= e.imgUrl %>" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title"><%= e.name %></h5>
+            <p class="card-text"><%= e.description %></p>
+            <p class="card-text"><small class="text-muted"><%= formatCurrency(e.price) %></small></p>
+            <a href=""><button class="btn btn-primary btn-sm ">Buy</button></a>
+          </div>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+</div>
+
+ <%- include('partials/Footer') %>

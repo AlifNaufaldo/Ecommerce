@@ -1,0 +1,67 @@
+<%- include('partials/Header') %>
+
+<style>
+    body {
+        height: 100vh;
+        margin: 0;
+        background-color: rgba(128, 128, 128, 0.5); /* grayish background with blur effect */
+        background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'8\' height=\'8\'%3E%3Crect x=\'0\' y=\'0\' width=\'4\' height=\'4\' fill=\'%23f0f0f0\'/%3E%3C/svg%3E'); /* adds a subtle grid pattern */
+        background-blend-mode: multiply;
+        background-size: 20px 20px;
+    }
+
+    .container-full-height {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .btn-login {
+            background-color: #3498db ;
+            color: white;
+        }
+</style>
+
+<div class="container-full-height">
+    <div class="card shadow-lg p-4">
+        <h3 class="text-center mb-4">Login to BukaToko</h3>
+        <form action="/register" method="POST">
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <div class="mb-3">
+                <label for="role" class="form-label">Role</label>
+                <select class="form-select" id="role" name="role" required>
+                    <option value="" disabled selected>Select your role</option>
+                    <option value="buyer">Buyer</option>
+                    <option value="seller">Seller</option>
+                </select>
+            </div>
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+            </div>
+        </form>        
+    </div>
+</div>
+
+<%- include('partials/Footer') %>
