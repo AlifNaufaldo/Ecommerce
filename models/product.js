@@ -3,6 +3,7 @@ const {
   Model,
   where
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Product extends Model {
     /**
@@ -25,21 +26,36 @@ module.exports = (sequelize, DataTypes) => {
         style: "currency", currency: "IDR"
       }).format(price);
     }
+    // static async getProducts(search = '', sortByPrice = 'ASC', Category) {
+    //       const options = {
+    //           include: {
+    //               model: Category,  
+    //               attributes: ['name'] 
+    //           },
+    //           where: {
+    //               name: {
+    //                   [Op.iLike]: `%${search}%` 
+    //               }
+    //           }
+    //       };
 
-    static getProductByCategory(filter, Category){
-      let option = {
-        include :{
-          model: Category,
-          attributes: [['name']]
-        }
-      }
-      if (filter) {
-        option.include.where = {
-            name: filter,
-        };
-      }
-      return Product.findAll(option)
-    }
+    //       const products = await this.findAll(options);
+    //       return products;
+
+    // static getProductByCategory(filter, Category){
+    //   let option = {
+    //     include :{
+    //       model: Category,
+    //       attributes: [['name']]
+    //     }
+    //   }
+    //   if (filter) {
+    //     option.include.where = {
+    //         name: filter,
+    //     };
+    //   }
+    //   return Product.findAll(option)
+    // }
   }
   Product.init({
     name: {
@@ -86,11 +102,6 @@ module.exports = (sequelize, DataTypes) => {
         },
         isUrl: {
           msg: 'Please provide a valid URL'
-        },
-        isImage(value) {
-            if (!(/\.(jpg|jpeg|png|gif)$/i).test(value)) {
-                throw new Error('The URL must be a link to an image (jpg, jpeg, png, gif)');
-            }
         }
       }
     }

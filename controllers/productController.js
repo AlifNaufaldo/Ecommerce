@@ -27,6 +27,11 @@ class ProductController {
                     }
                 }
             });
+            // const { search, sortByPrice } = req.query;
+
+            // // Memanggil method getProducts dari model Product
+            // const products = await Product.getProducts(search, sortByPrice);
+
             //
             // const data = await Product.getProductByCategory(filter, Category, {
             //     include :{
@@ -76,22 +81,25 @@ class ProductController {
     }
     static async buyProduct(req, res) {
         try {
-            // Mendapatkan ID produk dari parameter URL
-            const {productId} = req.params;
-            // Mendapatkan data produk berdasarkan ID
-            const product = await Product.findByPk(productId);
-            // Validasi: jika produk tidak ditemukan
-            if (!product) {
-                return res.send({ message: 'Product is not found' });
+            // Mendapatkan id produk dari parameter URL
+            const { productId } = req.params;
+            // Mendapatkan data dari request body
+            const { name, description, price, imgUrl, CategoryId} = req.body;
+            // Validasi input
+            if (!name && !description && !price && !imgUrl && !CategoryId) {
+                return res.send({ message: 'Please fiil the field' });
             }
-            // Buat entri baru di tabel Order
-            const newOrder = await Order.create({
-                productId: product.id,
-                userId: userId,
-                quantity: 1, // Atur jumlah yang dibeli, ini bisa diubah jika ingin
-                amount: product.price, // Total harga berdasarkan harga produk
+            // Mencari produk yang akan diperbarui
+            const data = await Product.findByPk(productId);
+            if (!data) {
+                return res.send({ message: 'product is not found' });
+            }
+            // Memperbarui produk dengan data baru
+            const newProduct = await Product.update({
+                name, description, price, imgUrl, CategoryId
             });
-            res.send({ message: 'Order is succesfull', newOrder});
+            //    res.send(newProduct);
+            res.redirect('/products')
         } catch (error) {
             console.error(error);
             return res.send({ message: 'Please check your input', error: error.message });
@@ -130,10 +138,10 @@ class ProductController {
                 return res.send({ message: 'product is not found' });
             }
             // Memperbarui produk dengan data baru
-            const newProduct = await Product.update({
+            await Product.update({
                 name, description, price, imgUrl, CategoryId
             });
-               res.send(newProduct);
+            //    res.send(newProduct);
             res.redirect('/products')
         } catch (error) {
             console.error(error);
@@ -144,9 +152,7 @@ class ProductController {
         try {
             // Mendapatkan ID produk dari parameter URL
             const { id } = req.params;
-            // console.log(id)
-            // console.log("Deleting product with ID:", id);
-            // Mencari produk berdasarkan ID
+    
             const data = await Product.findByPk(id);
             // Validasi: jika produk tidak ditemukan
             if (!data) {

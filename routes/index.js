@@ -22,7 +22,7 @@ router.use(function (req, res, next) {
 router.get('/products', ProductController.showProduct)
 router.get('/products/add', ProductController.getAddProductForm)
 router.post('/products/add', ProductController.postAddProductForm)
-router.get('/products/:id/buy', ProductController.buyProduct)
+router.post('/products/:id/buy', ProductController.buyProduct)
 router.get('/products/:id/update', ProductController.getUpdateProduct)
 router.post('/products/:id/update', ProductController.postAddProductForm )
 router.get('/products/:id/delete', ProductController.deleteProduct )
